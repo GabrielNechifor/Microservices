@@ -24,6 +24,11 @@ public class UserLoginData
 	{
 		return role;
 	}
+	
+	public void setPassword(String pass)
+	{
+		this.password=pass;
+	}
 
 
 }

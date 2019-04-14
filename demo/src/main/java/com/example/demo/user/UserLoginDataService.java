@@ -2,6 +2,7 @@ package com.example.demo.user;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,20 +19,23 @@ public class UserLoginDataService {
 	/**
 	 * checks if password is >=8 letters
 	 * checks for special characters and digits
+	 * hashes the password
 	 */
-	private boolean isPasswordStrong(String password)
+	private boolean isPasswordStrong(UserLoginData user)
 	{
-        if(password.length()>=8)
+        if(user.getPassword().length()>=8)
         {
 		Pattern letter = Pattern.compile("[a-zA-z]");
         Pattern digit = Pattern.compile("[0-9]");
         Pattern special = Pattern.compile ("[!@#$%&*()_+=|<>?{}\\[\\]~-]");
         
-        Matcher containsLetter = letter.matcher(password);
-        Matcher containsDigit = digit.matcher(password);
-        Matcher containsSpecial= special.matcher(password);
+        Matcher containsLetter = letter.matcher(user.getPassword());
+        Matcher containsDigit = digit.matcher(user.getPassword());
+        Matcher containsSpecial= special.matcher(user.getPassword());
         
-        return containsLetter.find() && containsDigit.find() && containsSpecial.find();
+        if( containsLetter.find() && containsDigit.find() && containsSpecial.find())
+        	 user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt())); 
+        return true;
         }
         return false;
         
@@ -40,11 +44,15 @@ public class UserLoginDataService {
 	@Autowired
 	private UserLoginDataRepository userLoginDataRepository;
 	
-	public void addUser(UserLoginData user) 
+	public String addUser(UserLoginData user) 
 	{
-		if(isDriverOrSender(user) && isPasswordStrong(user.getPassword()) && 
+		if(isDriverOrSender(user) && isPasswordStrong(user) && 
 				!userLoginDataRepository.existsById(user.getUsername()))
+		{
 				userLoginDataRepository.save(user);
+				return "Succes";
+		}
+		else return "Fail";
 	}
 
 }

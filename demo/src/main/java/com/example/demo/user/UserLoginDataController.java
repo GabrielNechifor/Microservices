@@ -13,8 +13,8 @@ public class UserLoginDataController
 	
 	
 	@PostMapping("/registerUser")
-	public void registerUser(@RequestBody UserLoginData user)
+	public String registerUser(@RequestBody UserLoginData user)
 	{
-		userLoginDataService.addUser(user);
+		return userLoginDataService.addUser(user);
 	}
 }
