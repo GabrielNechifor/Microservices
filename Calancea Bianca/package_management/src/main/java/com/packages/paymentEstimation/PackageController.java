@@ -1,11 +1,11 @@
-package com.example.demo.controller;
+package com.packages.paymentEstimation;
+
+import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.example.demo.service.PackageService;
 
 
 
@@ -14,9 +14,9 @@ public class PackageController {
 	@Autowired
 	PackageService packageController;
 	
-	@RequestMapping("/estimatePrice/{volume}/{weight}/{distance}")
-	public float Estimate(@PathVariable float volume,@PathVariable float weight,@PathVariable float distance)
+	@RequestMapping("/estimatePrice/{id}")
+	public float Estimate(@PathVariable int id) throws IOException
 	{
-		return  packageController.EstimatePrice(volume, weight, distance);
+		return  packageController.EstimatePrice(id);
 	}
 }
