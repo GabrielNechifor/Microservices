@@ -1,0 +1,10 @@
+spring:
+    datasource:
+      driverClassName: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://104.155.181.216:3306/user_sender_management_db?useSSL=false
+      username: microservices
+      password: iUber
+    jpa:
+      hibernate.ddl-auto: update
+      generate-ddl: true
+      show-sql: true
