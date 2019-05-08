@@ -1,9 +1,9 @@
-package com.packages.repositories;
+package com.addresses.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+//import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.packages.model.Location;
+//import com.addresses.model.Location;
 
-public interface AddressesRepository extends JpaRepository<Location,Integer> {
+//public interface AddressesRepository extends JpaRepository<Location,Integer> {
 
-}
+//}

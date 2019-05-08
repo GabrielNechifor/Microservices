@@ -1,4 +1,4 @@
-package com.packages.addresses;
+package com.addresses.addresses;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -9,8 +9,8 @@ import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.packages.model.Distance;
-import com.packages.model.Location;
+import com.addresses.model.Distance;
+import com.addresses.model.Location;
 
 @Service
 public class AddressesService {

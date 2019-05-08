@@ -1,4 +1,4 @@
-package com.packages.model;
+package com.addresses.model;
 
 public class Distance {
 	

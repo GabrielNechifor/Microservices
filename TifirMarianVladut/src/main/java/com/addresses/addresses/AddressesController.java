@@ -1,4 +1,4 @@
-package com.packages.addresses;
+package com.addresses.addresses;
 
 import java.io.IOException;
 
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.packages.model.Distance;
-import com.packages.model.Location;
+import com.addresses.model.Distance;
+import com.addresses.model.Location;
 
 
 @RestController
